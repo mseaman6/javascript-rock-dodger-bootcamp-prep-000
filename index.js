@@ -136,9 +136,13 @@ function moveDodgerLeft() {
   */
   var leftNumbers = DODGER.style.left.replace('px', '');
   var left = parseInt(leftNumbers, 10);
-  if (left > 0) {
+  function step() {
     DODGER.style.left = `${left-4}px`;
+    if (left > 0) {
+      window.requestAnimationFrame(step);
+    }  
   }
+  window.requestAnimationFrame(step);
 }
 
 function moveDodgerRight() {
